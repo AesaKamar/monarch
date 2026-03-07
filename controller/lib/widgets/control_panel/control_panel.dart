@@ -147,6 +147,22 @@ class ControlPanel extends StatelessWidget {
                 ),
               )
             ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              const SizedBox(
+                width: 87,
+              ),
+              SizedBox(
+                width: 150,
+                child: StockholmButton(
+                  onPressed: actions.captureScreenshot,
+                  child: const TextBody1('Screenshot',
+                      shouldTranslate: false),
+                ),
+              )
+            ],
           )
         ],
       ),

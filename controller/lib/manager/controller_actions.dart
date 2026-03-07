@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:monarch_grpc/monarch_grpc.dart';
 import '../data/visual_debug_flag_utils.dart';
@@ -72,5 +73,18 @@ class ControllerActions {
     await previewApi.launchDevTools(Empty());
     await previewApi
         .trackUserSelection(KindInfo(kind: 'launch_devtools_clicked'));
+  }
+
+  void captureScreenshot() async {
+    try {
+      print('Capturing screenshot via monarch_auto_capture.sh...');
+      final result = await Process.run('./monarch_auto_capture.sh', ['ui_capture']);
+      print('Capture internal stdout: ${result.stdout}');
+      if (result.stderr.toString().isNotEmpty) {
+        print('Capture internal stderr: ${result.stderr}');
+      }
+    } catch (e) {
+      print('Failed to execute capture script: $e');
+    }
   }
 }
