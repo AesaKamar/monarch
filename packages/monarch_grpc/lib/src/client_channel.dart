@@ -4,7 +4,7 @@ import 'package:grpc/grpc.dart';
 
 String get clientLocalhost {
   if (Platform.isMacOS || Platform.isLinux) {
-    return '0.0.0.0';
+    return '127.0.0.1';
   } else if (Platform.isWindows) {
     return 'localhost';
   } else {
